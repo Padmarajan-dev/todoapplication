@@ -1,0 +1,50 @@
+@import "~bootstrap/dist/css/bootstrap.css";
+@import '~font-awesome/css/font-awesome.min.css';
+@import url('https://fonts.googleapis.com/css2?family=Caveat&family=Darker+Grotesque:wght@300&family=Titillium+Web&display=swap');
+//style for custom input with logo
+.custom-input
+{
+    border:1px solid grey;
+    border-radius: 50px;
+    .form-control,.custom-select
+    {
+        border: none;
+        box-shadow: none;
+        outline: none;
+        &:focus
+        {
+            border: none;
+            box-shadow: none;
+            outline: none; 
+        }
+    }
+}
+
+#logo
+{
+    height: 100px;
+    width: 150px;
+}
+
+label 
+{
+    font-weight: bold;
+}
+
+dp-date-picker.dp-material .dp-picker-input
+ {
+     border:none;
+ }
+ #datepicker
+ {
+     border: 1px solid grey;
+ }
+
+ #imagebanner
+{
+    background: url('./assets/images/login_image.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 25em;
+}

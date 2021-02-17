@@ -1,0 +1,57 @@
+<div class="container">
+    <div class="row">
+        <h3 class="text-center col mt-2">Your Todos</h3>
+    </div>
+    <!--Search Filter-->
+    <div class="row mt-3">
+        <div class="col-12 col-lg-8 d-flex mx-auto">
+            <input class="form-control" (keyup)="filterTodo($event)" type="search" placeholder="Search Your todo here" aria-label="Search">
+    </div>
+    </div>
+    <!-- Calander Filter
+    <div class="row mt-2">
+        <div class="col-11 col-lg-4 d-flex mx-auto mt-3" id="datepicker">
+        <dp-date-picker (ngModelChange)="filterByDate()" #dp theme="dp-material" class="my-auto" [(ngModel)]="selectedDate" [config]="datePickerConfig"></dp-date-picker>
+        <i class="fa fa-calendar my-auto ml-auto" (click)="dp.api.open()"></i>
+        </div>
+    </div>     -->
+    <!--Todos-->
+    <div class="row mt-5" *ngIf="!filter">
+        <div *ngFor="let todo of todoList" class="card col-lg-3 col-10 ml-4 mx-auto ml-lg-1 mt-2" (click)="isCompleted(todo.userId,todo.todoid)" style="width: 18rem;">
+            <img class="card-img-top mt-2" *ngIf="!todo.isCompleted" src="../../../assets/images/todo_card_image.jpg" alt="Card image cap">
+            <img class="card-img-top mt-2" *ngIf="todo.isCompleted" src="../../../assets/images/ischecked.jpg" alt="Card image cap">
+            <div class="card-body">
+              <div class="d-flex">
+                <h5 class="card-title">{{todo.task}}</h5>
+                <i class="ml-auto fa fa-chalkboard fa-2x" *ngIf="todo.category=='Learning'"></i>
+                <i class="ml-auto fas fa-dumbbell" *ngIf="todo.category=='Fitness'"></i>
+                <i class="ml-auto fa fa-handshake fa-2x" *ngIf="todo.category=='Meeting'"></i>
+                <i class="ml-auto fa fa-thumb-tack fa-2x" *ngIf="todo.category=='Others'"></i>
+              </div>
+              <!-- <a  class="btn btn-primary rounded-circle"><i class="fa fa-edit"></i></a>
+              <a  class="btn btn-danger rounded-circle ml-2" (click)="removeTask(todo.userId,todo.todoid)"><i class="fa fa-trash"></i></a> -->
+            </div>
+        </div>
+        <p class="mx-auto" *ngIf="todoList.length==0">Your Todos List Is Empty</p>
+    </div>  
+    <!--render while on filter-->
+    <div class="row mt-5" *ngIf="filter">
+      <div *ngFor="let todo of filteredTodos" class="card col-lg-3 col-10 ml-4 mx-auto ml-lg-1 mt-2" (click)="isCompleted(todo.userId,todo.todoid)" style="width: 18rem;">
+          <img class="card-img-top mt-2" *ngIf="!todo.isCompleted" src="./assets/images/todo_card_image.jpg" alt="Card image cap">
+          <img class="card-img-top mt-2" *ngIf="todo.isCompleted" src="./assets/images/ischecked.jpg" alt="Card image cap">
+          <div class="card-body">
+            <div class="d-flex">
+              <h5 class="card-title">{{todo.task}}</h5>
+              <i class="ml-auto fa fa-chalkboard fa-2x" *ngIf="todo.category=='Learning'"></i>
+              <i class="ml-auto fas fa-dumbbell" *ngIf="todo.category=='Fitness'"></i>
+              <i class="ml-auto fa fa-handshake fa-2x" *ngIf="todo.category=='Meeting'"></i>
+              <i class="ml-auto fa fa-thumb-tack fa-2x" *ngIf="todo.category=='Others'"></i>
+            </div>
+            <!-- <a  class="btn btn-primary rounded-circle"><i class="fa fa-edit"></i></a>
+            <a  class="btn btn-danger rounded-circle ml-2" (click)="removeTask(todo.userId,todo.todoid)"><i class="fa fa-trash"></i></a> -->
+          </div>
+        </div>
+  </div>  
+    <!--floating button for add todo-->
+    <a routerLink="addtodos"><button class="btn btn-primary rounded-circle fixed-bottom ml-auto mb-3 mr-3"><i class="fa fa-plus"></i></button></a>
+</div>

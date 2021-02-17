@@ -1,0 +1,10 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-primary">
+    <a class="navbar-brand">
+        <img src="./assets/images/todo_list_logo.png"  class="rounded-circle" style="height: 50px;width: 50px;">
+    </a>
+    <div class="ml-auto d-flex">
+        <a  routerLink="../"><button class="btn btn-info" *ngIf="router.url.includes('/addtodos')">Todos</button></a>
+        <button class="btn ml-2  btn-success" *ngIf="!router.url.includes('signin')" (click)="logout()">Logout</button>
+    </div>
+</nav>
+<router-outlet></router-outlet>

@@ -1,0 +1,59 @@
+<div class="container">
+    <div class="row mt-5" >
+        <!--image banner-->
+        <div class="col-lg-6" id="imagebanner">
+     
+        </div>
+        <!--form-->
+        <div class="col-lg-6" id="form">
+            <!--Logo-->
+            <div class="col-12 mt-3 text-center">
+                <img src="./assets/images/todo_logo.png" class="rounded-circle" id="logo">
+            </div>
+            <!--Task Field-->
+            <div class="col-12 col-lg-8 mt-4 mx-auto">
+                <label>Task</label>
+                <div class="custom-input  d-flex" [formGroup]="addTodoForm">
+                    <i class="fa fa-thumb-tack my-auto ml-2"></i>
+                    <input class="form-control bg-transparent" formControlName="Task">
+                </div>
+                 <!--Validations-->
+                 <div class="errors">
+                     <p class="error-text mt-1" *ngIf="addTodoForm.get('Task').touched && addTodoForm.get('Task').errors?.required">Task Field is required</p>
+                </div>
+              </div>
+                <div class="col-12 col-lg-8  mx-auto mt-3" >
+                    <label>Category</label>  
+                    <div class="col custom-input  d-flex">
+                    <select class="custom-select col" id="inputGroupSelect01" [value]="category" (change)="selectCategory($event)">
+                        <option value="Meeting">Meeting</option>
+                        <option value="Learning">Learning</option>
+                        <option value="Fitness">Fitness</option>
+                        <option value="Others">Others</option>
+                      </select>
+                    </div>
+                    <div class="errors">
+                        <p class="error-text mt-1" *ngIf="category==''">Category Field is required</p>
+                   </div>
+                </div>      
+             <!--Date Field-->
+
+                <div class="col-12 col-lg-8 mx-auto mt-3" >
+                <label>Date</label>
+                <div class="col d-flex"  id="datepicker">
+                <dp-date-picker  #dp theme="dp-material" class="my-auto" [(ngModel)]="selectedDate" [config]="datePickerConfig"></dp-date-picker>
+                <i class="fa fa-calendar my-auto ml-auto" (click)="dp.api.open()"></i>
+                </div>  
+                <div class="errors">
+                    <p class="error-text mt-1" *ngIf="selectedDate==undefined">Date Field is required</p>
+               </div>
+              </div>
+                <!--Todo button-->
+             <div class="col text-center">
+                <button class="btn btn-success col-8 col-lg-4  mt-4" (click)="addTodo()"  [disabled]="addTodoForm.invalid||category==''||selectedDate==undefined">Add Todo</button>
+            </div>
+            </div> 
+           
+        </div>
+    </div>
+ 

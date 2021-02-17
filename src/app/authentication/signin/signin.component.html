@@ -1,0 +1,46 @@
+<div class="container">
+   <div class="row mt-5" [formGroup]="signInForm">
+       <!--image banner-->
+       <div class="col-lg-6" id="imagebanner">
+    
+       </div>
+       <!--form-->
+       <div class="col-lg-6" id="form">
+           <!--Logo-->
+           <div class="col-12 mt-3 text-center">
+               <img src="./assets/images/todo_logo.png" class="rounded-circle" id="logo">
+           </div>
+           <!--Username Field-->
+           <div class="col-12 col-lg-8 mt-4 mx-auto">
+               <label>Username</label>
+               <div class="custom-input  d-flex">
+                   <span class="fa fa-user my-auto  ml-2"></span>
+                   <input class="form-control bg-transparent" formControlName="username">
+               </div>
+                <!--Validations-->
+                <div class="errors">
+                    <p class="error-text ml-2" *ngIf="signInForm.get('username').touched && signInForm.get('username').errors?.required">username is required</p>
+                    <p class="error-text ml-2" *ngIf="signInForm.get('username').touched && signInForm.get('username').errors?.minlength">username must have min of 2 characters</p>
+                    <p class="error-text ml-2" *ngIf="signInForm.get('username').touched && signInForm.get('username').errors?.maxlength">username must have max of 8 characters</p>
+               </div>
+           </div>
+            <!--Username Field-->
+            <div class="col-12 col-lg-8 mt-3 mx-auto">
+               <label>Email</label>
+                <div class="custom-input d-flex">
+                  <span class="fa fa-envelope my-auto  ml-2"></span>  
+                  <input class="form-control bg-transparent" formControlName="email">
+                </div>
+                     <!--Validations-->
+                     <div class="errors">
+                        <p class="error-text ml-2" *ngIf="signInForm.get('email').touched && signInForm.get('email').errors?.required">Email is required</p>
+                        <p class="error-text ml-2" *ngIf="signInForm.get('email').touched && signInForm.get('email').errors?.email">Inavlid Email</p>
+                    </div>
+            </div>
+            <!--Login button-->
+            <div class="col text-center">
+                <button class="btn btn-success col-8 col-lg-4  mt-4" (click)="signIn()" [disabled]="signInForm.invalid">Signin</button>
+            </div>
+       </div>
+   </div>
+</div>
